@@ -1,0 +1,2 @@
+def testPageGet():
+    with open("first-team", "r")
