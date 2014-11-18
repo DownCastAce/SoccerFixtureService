@@ -1,4 +1,0 @@
-def testPageGet():
-    with open("first-team", "r") as myfile:
-        date=myfile.readlines()
-        print date
