@@ -22,16 +22,17 @@ def testNextTeam():
 	for elem in soup.find_all(class_='fixture-info'):
 		print elem
 
-def testNextTeamInfo():
+def testNextTeamName():
 	f = open("tests/first-team", "r")
 	content = f.read()
 	soup = BeautifulSoup(content)
 	assert soup != None
-	for elem in soup.find_all(class_='fixture-info'):
-		print elem
+	for elem in soup.find_all("div", {"class":"fixture-info"}):
+		elem.contents[1].find_all("td", {"class":"against"})[0].text.strip() != None
+		
 
 if __name__ == "__main__":
 	testPageGet()
-#	testBS()
-#	testNextTeam()
+	testBS()
+	testNextTeam()
 	testNextTeamInfo()
