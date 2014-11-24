@@ -28,11 +28,16 @@ def testNextTeamName():
 	soup = BeautifulSoup(content)
 	assert soup != None
 	for elem in soup.find_all("div", {"class":"fixture-info"}):
-		elem.contents[1].find_all("td", {"class":"against"})[0].text.strip() != None
+		child = elem.contents[1].findChild("td", {"class":"against"})
+		if child.findChild("a") != None:
+			s = child.findChild("a").text
+		else:
+			s= child.text
+		assert s.split("\n")[1].strip() != ""
 		
 
 if __name__ == "__main__":
-	testPageGet()
-	testBS()
-	testNextTeam()
-	testNextTeamInfo()
+	#testPageGet()
+	#testBS()
+	#testNextTeam()
+	testNextTeamName()
